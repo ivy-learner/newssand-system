@@ -4,7 +4,7 @@ import SideMenu from '../../components/sandbox/SideMenu'
 import TopHeader from '../../components/sandbox/TopHeader'
 import Home from './home/Home'
 import UserList from './user-manage/UserList'
-import RoleList from './right-manage/RightList'
+import RoleList from './right-manage/RoleList'
 import RightList from './right-manage/RightList'
 import NoPermission from './nopermission/NoPermission'
 
