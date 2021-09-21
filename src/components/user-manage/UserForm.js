@@ -2,13 +2,51 @@ import React, { forwardRef ,useEffect,useState} from "react"
 import { Form, Input, Select } from "antd"
 
 const UserForm = forwardRef((props,ref) => {
-  const { option } = Select
+  const { Option } = Select
   const { regionList, roleList } = props
   const [isDisabled ,setisDisabled] = useState(false)
+  const {roleId,region}  = JSON.parse(localStorage.getItem("token"))
+  const roleObj = {
+    "1":"superadmin",
+    "2":"admin",
+    "3":"editor"
+}
 
   useEffect(()=>{
     setisDisabled(props.isUpdateDisabled)
   },[props.isUpdateDisabled])
+
+  const checkRegionDisabled =(item)=>{
+    if(props.isUpdate){
+      if(roleObj[roleId]=== "superadmin"){
+        return false
+      }else{
+        return true
+      }
+    }else{
+      if(roleObj[roleId]=== "superadmin"){
+        return false
+      }else{
+        return item.value !== region
+      }
+    }
+  }
+
+  const checkRoleDisabled =(item) =>{
+    if(props.isUpdate){
+      if(roleObj[roleId]=== "superadmin"){
+        return false
+      }else{
+        return true
+      }
+    }else{
+      if(roleObj[roleId]=== "superadmin"){
+        return false
+      }else{
+        return roleObj[item.id] !== "editor"
+      }
+    }
+  }
   return (
     <div>
       <Form ref={ref} layout="vertical">
@@ -48,9 +86,9 @@ const UserForm = forwardRef((props,ref) => {
         >
           <Select disabled={isDisabled}>
             {regionList.map((item) => (
-              <option value={item.value} key={item.id}>
+              <Option value={item.value} key={item.id} disabled={checkRegionDisabled(item)}>
                 {item.title}
-              </option>
+              </Option>
             ))}
           </Select>
         </Form.Item>
@@ -75,9 +113,9 @@ const UserForm = forwardRef((props,ref) => {
             }
           }}>
             {roleList.map((item) => (
-              <option value={item.id} key={item.id}>
+              <Option value={item.id} key={item.id} disabled={checkRoleDisabled(item)}>
                 {item.roleName}
-              </option>
+              </Option>
             ))}
           </Select>
         </Form.Item>

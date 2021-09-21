@@ -74,9 +74,9 @@ export default function RightList(){
       setdataSource(dataSource.filter(data=>data.id!==item.id))
       axios.delete(`http://localhost:5000/rights/${item.id}`)
      }else{
-       console.log(item.rightId)
+      //  console.log(item.rightId)
        let list=dataSource.filter(data=>data.id===item.rightId)
-       console.log(list)
+      //  console.log(list)
        list[0].children=list[0].children.filter(data=>data.id!==item.id)
        setdataSource([...dataSource])
        axios.delete(`http://localhost:5000/children/${item.id}`)

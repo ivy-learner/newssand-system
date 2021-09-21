@@ -58,7 +58,7 @@ const deleteMethod = (item) =>{
         axios.delete(`http://localhost:5000/roles/${item.id}`)
        
     }
-const handleOk = (checkkeys) =>{
+const handleOk = () =>{
   setisModalVisible(false)
   //同步dataSource
   setdataSource(dataSource.map(item=>{
@@ -79,7 +79,6 @@ const handleCancel = () =>{
   setisModalVisible(false)
 }
 const onCheck = (checkkeys) => {
-  // console.log(checkkeys)
 setcurrentRights(checkkeys.checked)
 }
   useEffect(()=>{

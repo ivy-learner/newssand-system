@@ -22,17 +22,14 @@ function SideMenu(props){
   const [menu,setMenu]=useState([])
   useEffect(()=>{
     axios.get("http://localhost:5000/rights?_embed=children").then(res=>{
-        console.log(res.data)
         setMenu(res.data)
       }
     )
   },[])
 
-const {role:{rights}}=JSON.parse(localStorage.getItem("token"))
-// console.log(rights instanceof Array)
+// const {role:{rights}}=JSON.parse(localStorage.getItem("token"))
 const  checkPagePermission =(item)=>{
-  //  return item.pagepermisson && Array(rights).includes(item.key)
-  console.log(item.key)
+  //  return item.pagepermisson && (()=>rights.includes(item.key))
   return item.pagepermisson === 1
   }
   const renderMenu = (menuList)=>{
