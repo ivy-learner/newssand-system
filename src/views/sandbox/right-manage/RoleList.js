@@ -79,8 +79,8 @@ const handleCancel = () =>{
   setisModalVisible(false)
 }
 const onCheck = (checkkeys) => {
-  console.log(checkkeys)
-setcurrentRights(checkkeys)
+  // console.log(checkkeys)
+setcurrentRights(checkkeys.checked)
 }
   useEffect(()=>{
        axios.get("http://localhost:5000/roles").then(res=>{

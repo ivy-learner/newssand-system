@@ -27,8 +27,13 @@ function SideMenu(props){
       }
     )
   },[])
+
+const {role:{rights}}=JSON.parse(localStorage.getItem("token"))
+// console.log(rights instanceof Array)
 const  checkPagePermission =(item)=>{
-   return item.pagepermisson === 1
+  //  return item.pagepermisson && Array(rights).includes(item.key)
+  console.log(item.key)
+  return item.pagepermisson === 1
   }
   const renderMenu = (menuList)=>{
     return menuList.map(item => {
